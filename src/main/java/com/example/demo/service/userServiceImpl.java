@@ -39,6 +39,28 @@ public class userServiceImpl implements userService{
         return flag;
     }
 
+    public boolean addUser(user user) {
+        boolean flag=false;
+        try{
+            userMapper.addUser(user);
+            flag=true;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean deleteUser(int id) {
+        boolean flag=false;
+        try{
+            userMapper.deleteUser(id);
+            flag=true;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
     public String testXX() {
         String xx = x.xx(111);
         return xx;

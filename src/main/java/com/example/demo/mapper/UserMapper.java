@@ -4,6 +4,8 @@ import com.example.demo.bean.user;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Delete;
 import java.util.List;
 
 @Mapper
@@ -26,4 +28,14 @@ public interface UserMapper {
      */
     @Update("update user set name=#{name},age=#{age},sex=#{sex} where id=#{id}")
     void updateUser(user user);
+    /**
+     * 用户数据新增
+     */
+    @Insert("insert into user(id,name,age,sex) values (#{id},#{name},#{age},#{sex})")
+    void addUser(user user);
+    /**
+     * 用户数据删除
+     */
+    @Delete("delete from user where id=#{id}")
+    void deleteUser(int id);
 }

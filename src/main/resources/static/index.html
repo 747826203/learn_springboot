@@ -24,12 +24,12 @@
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<button style="display: block;margin: 20px auto;width: 160px;height: 60px;" onclick="getAll()">查看用户信息</button>
-<button style="display: block;margin: 20px auto;width: 160px;height: 60px;" onclick="getUser()">查看单个用户信息</button>
-<button style="display: block;margin: 20px auto;width: 160px;height: 60px;" onclick="getAll()">新增用户</button>
-<button style="display: block;margin: 20px auto;width: 160px;height: 60px;" onclick="updateUser()">修改用户</button>
-<button style="display: block;margin: 20px auto;width: 160px;height: 60px;" onclick="getAll()">删除用户</button>
-<button style="display: block;margin: 20px auto;width: 160px;height: 60px;" onclick="getTest()"> 测试</button>
+<button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getAll()">查看用户信息</button>
+<button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getUser()">查看单个用户信息</button>
+<button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getAdd()">新增用户</button>
+<button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="updateUser()">修改用户</button>
+<button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getDel()">删除用户</button>
+<button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getTest()"> 测试</button>
 <div class="result" id="result"></div>
 <script>
     function getAll(){
@@ -61,16 +61,50 @@
             },
         });
     }
+    function getAdd(){
+        $.ajax({
+            type: "post",
+            url: "user/add",
+            data: {
+                name: '卡戴珊',
+                id: 3,
+                sex: '女',
+                age: 35
+            },
+            success:function (data) {
+                console.log(data)
+                $("#result").empty()
+                $("#result").append(JSON.stringify(data) + "<br>")
+            },
+        });
+    }
+    function getDel(){
+        $.ajax({
+            type: "delete",
+            url: "user/del",
+            data: {
+                userId: 3,
+            },
+            success:function (data) {
+                console.log(data)
+                $("#result").empty()
+                $("#result").append(JSON.stringify(data) + "<br>")
+            },
+        });
+    }
     function updateUser(){
         $.ajax({
             type: "put",
             url: "user/update",
-            data: {
+            headers: {
+                "Content-Type":  "application/json"
+            },
+            data: JSON.stringify({
                 name: '卡佩拉',
                 id: 4,
                 sex: '女',
-                age: 88
-            },
+                age: 108
+            }),
             success:function (data) {
                 console.log(data)
                 $("#result").empty()

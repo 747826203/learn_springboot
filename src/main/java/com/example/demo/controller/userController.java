@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -49,9 +49,21 @@ public class userController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public boolean updateUser( user user) {
+    public boolean updateUser(@RequestBody user user) {
         System.out.println("开始更新...");
         return userService.updateUser(user);
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public boolean addUser( user user) {
+        System.out.println("开始新增...");
+        return userService.addUser(user);
+    }
+
+    @RequestMapping(value = "/del", method = RequestMethod.DELETE)
+    public boolean delete(int userId) {
+        System.out.println("开始删除...");
+        return userService.deleteUser(userId);
     }
 }
 
