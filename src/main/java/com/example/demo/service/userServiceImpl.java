@@ -61,6 +61,11 @@ public class userServiceImpl implements userService{
         return flag;
     }
 
+    public int findScore(int x,int y) {
+        //int xx = x.xx(111);
+        return userMapper.findScoreByName(x,y);
+    }
+
     public String testXX() {
         String xx = x.xx(111);
         return xx;

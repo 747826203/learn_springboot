@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper文件相当于DAO接口的‘实现类’，namespace属性要指定`实现`DAO接口的全限定名-->
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <select id="findScoreByName" resultType="int">
+        SELECT score FROM score where user_id=#{id} and c_id=#{cid}
+    </select>
+<!--    <select id="queryById" parameterType="int" resultMap="userMap">-->
+<!--        SELECT u.user_name,u.age,m.brand,m.price-->
+<!--        FROM tb_user u,tb_mobile_phone m-->
+<!--        WHERE m.user_id=u.user_id-->
+<!--          AND-->
+<!--            u.user_id=#{userId}-->
+<!--    </select>-->
+</mapper>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
@@ -38,4 +39,10 @@ public interface UserMapper {
      */
     @Delete("delete from user where id=#{id}")
     void deleteUser(int id);
+    /**
+     * 根据用户名称查询用户成绩
+     */
+//    @Select("SELECT score FROM score where user_id=#{id} and c_id=#{cid}")
+
+    int findScoreByName(@Param("id") int id,@Param("cid") int cid);
 }

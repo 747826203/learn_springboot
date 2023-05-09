@@ -65,5 +65,12 @@ public class userController {
         System.out.println("开始删除...");
         return userService.deleteUser(userId);
     }
+
+    @GetMapping("/findScore")
+    public int findScoreByName(@RequestParam(value = "id", required = true) int id,@RequestParam(value = "cid", required = true) int cid) {
+        //List<user> list = userService.selectAll();
+        int scores = userService.findScore(id,cid);
+        return scores;
+    }
 }
 
