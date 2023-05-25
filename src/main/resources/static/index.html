@@ -31,6 +31,7 @@
 <button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getDel()">删除用户</button>
 <button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getScore()">查看单个用户成绩</button>
 <button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getTest()"> 测试</button>
+<button style="display: inline-block;margin: 20px auto;width: 160px;height: 60px;" onclick="getJson()"> 导出</button>
 <div class="result" id="result"></div>
 <script>
     function getAll(){
@@ -138,6 +139,20 @@
                 console.log(data)
                 $("#result").empty()
                     $("#result").append(JSON.stringify(data) + "<br>")
+            },
+        });
+    }
+
+    function getJson(){
+        $.ajax({
+            type: "get",
+            url: "user/json",
+            data: {
+            },
+            success:function (data) {
+                console.log(data)
+                $("#result").empty()
+                $("#result").append(JSON.stringify(data) + "<br>")
             },
         });
     }

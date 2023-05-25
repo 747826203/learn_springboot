@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class QQQ {
     public String qqq(){
+
         return "qqq";
     }
 }

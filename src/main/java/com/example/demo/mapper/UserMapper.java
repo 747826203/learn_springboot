@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.bean.user;
+import com.example.demo.bean.jsonData;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -45,4 +46,9 @@ public interface UserMapper {
 //    @Select("SELECT score FROM score where user_id=#{id} and c_id=#{cid}")
 
     int findScoreByName(@Param("id") int id,@Param("cid") int cid);
+    /**
+     * 导入JSON数据
+     */
+    @Insert("insert into jsonData(firstName,lastName,phone,email,name,phone1,localGovernmentName,cityName,fullAddress) values (#{firstName},#{lastName},#{phone},#{email},#{name},#{phone1},#{localGovernmentName},#{cityName},#{fullAddress})")
+    void addJson(jsonData jsonData);
 }

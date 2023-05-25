@@ -41,6 +41,13 @@ public class userController {
         return i;
     }
 
+    @GetMapping("/json")
+    public boolean jsonHandle() {
+        //List<user> list = userService.selectAll();
+        boolean i = userService.jsonBatchExport();
+        return i;
+    }
+
     @GetMapping("/findUser")
     public user findUser(@RequestParam(value = "userName", required = true) String userName) {
         //List<user> list = userService.selectAll();
